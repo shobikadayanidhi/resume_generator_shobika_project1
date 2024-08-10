@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Generator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container" id="cv-form">
+        <h1 class="text-center">Resume Generator</h1>
+        <p class="text-center">By Shobika Dayanidhi</p>
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Personal Information</h3>
+                <div class="form-group">
+                    <label for="nameField">Your Name</label>
+                    <input type="text" id="nameField" placeholder="Enter here" class="form-control">
+                </div>
+                <div class="form-group mt-2">
+                    <label for="contactField">Your contact(Mobile and Email)</label>
+                    <input type="text" id="contactField" placeholder="Enter here" class="form-control">
+                </div>
+                <div class="form-group mt-2">
+                    <label for="addressField">Your Address</label>
+                    <textarea id="addressField" placeholder="Enter here" class="form-control" rows="5"></textarea>
+                </div>
+                <p class="text-secondary my-3">Important Links</p>
+                <div class="form-group mt-2">
+                    <label for="fbField">Facebook</label>
+                    <input type="text" id="fbField" placeholder="Enter here" class="form-control">
+                </div>
+                <div class="form-group mt-2">
+                    <label for="instaField">Instagram</label>
+                    <input type="text" id="instaField" placeholder="Enter here" class="form-control">
+                </div>
+                <div class="form-group mt-2">
+                    <label for="linkedField">LinkedIn</label>
+                    <input type="text" id="linkedField" placeholder="Enter here" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h3>Professional Information</h3>
+                <div class="form-group mt-2">
+                    <label for="objectiveField">Objective - Your Goal</label>
+                    <textarea id="objectiveField" placeholder="Enter here" class="form-control" rows="5"></textarea>
+                </div>
+                <div class="form-group mt-2">
+                    <label for="weField">Work Experience - Projects/Competition</label>
+                    <textarea id="weField" placeholder="Enter here" class="form-control weField" rows="5"></textarea>
+                </div>
+                <div class="form-group mt-2">
+                    <label for="aqField">Academic Qualifications</label>
+                    <textarea id="aqField" placeholder="Enter here" class="form-control eqField" rows="5"></textarea>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h3>Skills and Certifications</h3>
+                <div class="form-group mt-2">
+                    <label for="skillsField">Skills</label>
+                    <textarea id="skillsField" placeholder="Enter here" class="form-control" rows="5"></textarea>
+                </div>
+                <div class="form-group mt-2">
+                    <label for="certificationsField">Certifications</label>
+                    <textarea id="certificationsField" placeholder="Enter here" class="form-control" rows="5"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="container text-center mt-3">
+            <button onclick="generateCV()" class="btn btn-primary btn-lg">Generate CV</button>
+        </div>
+    </div>
+    <script>
+        function generateCV() {
+            const name = document.getElementById('nameField').value;
+            const contact = document.getElementById('contactField').value;
+            const address = document.getElementById('addressField').value;
+            const fb = document.getElementById('fbField').value;
+            const insta = document.getElementById('instaField').value;
+            const linked = document.getElementById('linkedField').value;
+            const objective = document.getElementById('objectiveField').value;
+            const we = document.getElementById('weField').value;
+            const aq = document.getElementById('aqField').value;
+
+            const params = new URLSearchParams();
+            params.append('name', name);
+            params.append('contact', contact);
+            params.append('address', address);
+            params.append('facebook', fb);
+            params.append('instagram', insta);
+            params.append('linkedin', linked);
+            params.append('objective', objective);
+            params.append('workExperience', we);
+            params.append('academicQualifications', aq);
+
+            window.location.href = `display.html?${params.toString()}`;
+        }
+    </script>
+</body>
+</html>
